@@ -37,7 +37,7 @@ PRINT_TOKEN = os.getenv("PRINT_TOKEN") or "change-me"
 # PRINTER_NAME=ZDesigner ...
 PRINTER_NAME = os.getenv(
     "PRINTER_NAME",
-    "ZDesigner ZD421- Büro+ Label 75x40 2 auf 192.168.8.2 (umgeleitet 2)",
+    "PRINTER_NAME",
 )
 
 # =========================
@@ -192,4 +192,4 @@ def add_cors_headers(response):
 # Start
 # =========================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="host", port=port)
