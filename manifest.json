@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Syscara Tools",
+  "version": "1.2",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://admin.syscara.com/werkstatt/admin/*",
+        "https://admin.syscara.com/wparts/admin/*"
+      ],
+      "js": ["bestand.js"]
+    },
+    {
+      "matches": [
+        "https://admin.syscara.com/wparts/admin/*"
+      ],
+      "js": ["print.js"]
+    }
+  ]
+}
