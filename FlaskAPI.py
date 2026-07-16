@@ -33,12 +33,16 @@ db_config = {
 # =========================
 PRINT_TOKEN = os.getenv("PRINT_TOKEN") or "change-me"
 
-# Wenn du willst, kannst du den Namen auch in .env auslagern:
-# PRINTER_NAME=ZDesigner ...
-PRINTER_NAME = os.getenv(
-    "PRINTER_NAME",
-    "PRINTER_NAME",
-)
+# HIER KORRIGIERT: Holt den Druckernamen aus der .env. 
+# Falls dort nichts steht, weicht er auf den Standard-Zebra-Namen aus.
+PRINTER_NAME = os.getenv("PRINTER_NAME", "ZDesigner GK420t")
+
+# =========================
+# Flask Server Config aus .env
+# =========================
+SERVER_IP = os.getenv("FLASK_IP", "0.0.0.0")
+PORT = int(os.getenv("FLASK_PORT", "5000"))
+
 
 # =========================
 # DB Verbindung
@@ -100,7 +104,6 @@ def check_bestand():
 
 # =========================
 # ZPL erstellen (75x40mm)
-# Hinweis: Werte sind ein solider Start für 203 dpi
 # =========================
 def build_zpl(name: str, order: str, date_str: str) -> str:
     name = (name or "—")[:60]   # etwas mehr erlauben
@@ -192,4 +195,4 @@ def add_cors_headers(response):
 # Start
 # =========================
 if __name__ == "__main__":
-    app.run(host="host", port=port)
+    app.run(host=SERVER_IP, port=PORT)
